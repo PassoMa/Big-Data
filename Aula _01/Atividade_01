@@ -1,0 +1,5 @@
+#Calcula A soma de dois numeros fornecido pelo usuario
+num1 = int(input("Informe um Valor Inteiro: "))
+num2 = int(input("Informe um Valor Inteiro: "))
+result = num1 + num2
+print("A Soma dos Dois Valores é igual a: ",result)                                                                                                                                                                                                                                                                                                                                                                                                                                        
