@@ -1,0 +1,12 @@
+recebe = int(input("Quanto você recebe por hora? "))
+horas = int(input("Quantas horas trabalha mensalmente? "))
+bruto = recebe * horas
+inss = bruto * 0.08
+sind = bruto * 0.05
+irrf = (bruto - inss - sind) * 0.11
+liquido = bruto - (inss + sind + irrf)
+print("Salário Bruto = R$", (bruto))
+print("Desconto INSS = R$", (inss))
+print("Desconto Sindicato = R$", (sind))
+print(f"Desconto IRRF = R$ {irrf:.2f}")
+print(f"Salário Liquido = R${liquido:.2f}")
