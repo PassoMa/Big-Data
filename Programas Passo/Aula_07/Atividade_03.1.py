@@ -23,7 +23,7 @@ while resp =="S" or resp == "s":
     idade.append(int(input("Informe a idade: ")))
     resp = input("Deseja Continuar(S/N)? ")
 for i in range(len(sexo)):
-    if (sexo[i] == "F" or sexo[i] == "f") and (idade >= 18 and idade <= 35):
+    if (sexo[i] == "F" or sexo[i] == "f") and (idade[i] >= 18 and idade[i] <= 35):
         qtd_sexo_idade += 1
     if (olhos[i] == "V" or olhos[i]  == "v") and (cabelos[i] == "L" or cabelos[i] == "l"):
         qtd_olhos_cabelos += 1
