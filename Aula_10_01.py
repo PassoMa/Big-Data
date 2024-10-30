@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 print('---- OBTENDO DADOS ----')
 
@@ -146,18 +147,18 @@ else:
 
 #Vizualizando os dados sobre a renda e os valores de empréstimo
 print('\nVIZUALIZANDO OS DADOS...')
-plt.subplots(2,2,figsiz=(16,7)) #Cria a divisão da tabela
+plt.subplots(2,2,figsize=(16,7)) #Cria a divisão da tabela
 plt.suptitle('Analise dos Dados sobre Renda X Empréstimo') #Cria o título da tabela
 
 #Posição 01: Gráfico das rendas
 plt.subplot(2,2,1)
 plt.title('Lista das rendas por Cliente')
-plt.bar(df_financeira['Id_Cliente'],df_financeira['Renda'])
+plt.bar(df_financeira['Id_cliente'],df_financeira['Renda'])
 
 #Posição 02: Gráfico dos Empréstimos
 plt.subplot(2,2,2)
 plt.title('Lista dos Empréstimos')
-plt.bar(df_financeira['Id_Cliente'],df_financeira['Vlr_emprestado'])
+plt.bar(df_financeira['Id_cliente'],df_financeira['Vlr_emprestado'])
 
 #Posição 03: Medidadas descritivas das rendas
 plt.subplot(2,2,3)

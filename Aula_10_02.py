@@ -25,6 +25,12 @@ array_titanic_age = np.array(df_titanic["Age"])
 media_fare = np.mean(array_titanic_fare)
 media_age = np.mean(array_titanic_age)
 
+# Obtendo o maior e o menor valor da Passagem e da Idade
+maior_fare = np.max(array_titanic_fare)
+maior_age = np.max(array_titanic_age)
+menor_fare = np.min(array_titanic_fare)
+menor_age = np.min(array_titanic_age)
+
 # Obtendo a mediana do valor da passagem e da idade
 mediana_fare = np.median(array_titanic_fare)
 mediana_age = np.median(array_titanic_age)
@@ -116,6 +122,8 @@ if len(df_titanic_fare_outliers_superiores) == 0:
 else:
     print(df_titanic_fare_outliers_superiores)
 
+
+
 # Exibindo os dados sobre as idades dos passageiros
 print("\n-- OBTENDO INFORMAÇÕES SOBRE AS IDADES --")
 print('Medidas de Tendência Central')
@@ -149,4 +157,48 @@ if len(df_titanic_age_outliers_superiores) == 0:
 else:
     print(df_titanic_age_outliers_superiores)
 
-    
+#Vizualizando os dados sobre a renda e os valores de empréstimo
+print('\nVIZUALIZANDO OS DADOS...')
+plt.subplots(2,2,figsize=(16,7)) #Cria a divisão da tabela
+plt.suptitle('Analise dos Dados sobre Idade X Passagem') #Cria o título da tabela 
+
+#Posição 01: Gráfico das Passagens
+df_titanic_fare_outliers_superiores_order = df_titanic_fare_outliers_superiores.sort_values(by='Fare',ascending=True) #sort = usado para exebir em ordem
+plt.subplot(2,2,1)
+plt.xticks([])
+plt.title('Outliers dos Valores das Passagens')
+plt.bar(df_titanic_fare_outliers_superiores_order['Name'],df_titanic_fare_outliers_superiores_order['Fare'])
+
+#Posição 02: Gráfico das Idades
+df_titanic_age_outliers_superiores_order = df_titanic_age_outliers_superiores.sort_values(by='Age',ascending=True)
+plt.subplot(2,2,2)
+plt.title('Lista das Idades')
+plt.barh(df_titanic_age_outliers_superiores_order['Name'],df_titanic_age_outliers_superiores_order['Age'])
+
+#Posição 03: Medidadas descritivas das Passagens
+plt.subplot(2,2,3)
+plt.title('Medidas Descritivas das Passagens')
+plt.axis('off') #Retira a borda da imagem
+plt.text(0.1,0.9,f'Média das Passagen s{media_fare}',fontsize=9)
+plt.text(0.1,0.8,f'Mediana das Passagens {mediana_fare}',fontsize=9)
+plt.text(0.1,0.7,f'Distância entre Média e Mediana das Passagens {distancia_fare}',fontsize=9)
+plt.text(0.1,0.6,f'Maior valor das Passagens {maior_fare}',fontsize=9)
+plt.text(0.1,0.5,f'Menor valor das Passagens {menor_fare}',fontsize=9)
+plt.text(0.1,0.4,f'Distância entre Variância e Média  das Passagens {distancia_var_fare}%',fontsize=9)
+plt.text(0.1,0.3,f'Coeficiente de variação das Passagens {coeficiente_var_fare}',fontsize=9)
+
+#Posição 04: Medidadas descritivas das Idades
+plt.subplot(2,2,4)
+plt.title('Medidas Descritivas das Idades')
+plt.axis('off')
+plt.text(0.1,0.9,f'Média das Idades {media_age}',fontsize=9)
+plt.text(0.1,0.8,f'Mediana das Idades {mediana_age}',fontsize=9)
+plt.text(0.1,0.7,f'Distância entre Média e Mediana das Idades {distancia_age}',fontsize=9)
+plt.text(0.1,0.6,f'Maior valor das Idades {maior_age}',fontsize=9)
+plt.text(0.1,0.5,f'Menor valor das Idades {menor_age}',fontsize=9)
+plt.text(0.1,0.4,f'Distância entre Variância e Média das Idades {distancia_var_age}%',fontsize=9)
+plt.text(0.1,0.3,f'Coeficiente de variação das Idades {coeficiente_var_age}',fontsize=9)
+
+#Exibindo o Painel
+plt.tight_layout() #Distribuiu o grafico da melhor forma (formata o painel)
+plt.show()
